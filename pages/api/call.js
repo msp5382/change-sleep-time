@@ -52,7 +52,11 @@ export default function callAPI(req, res) {
   // const time = ["7", "33", "00"];
   // const date = ["9"];
 
+  console.log(time, date);
+
   const round = timeRound(time[1]);
+  console.log("round", round);
+
   if (round === "not-match") {
     res.send();
     return;
