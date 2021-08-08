@@ -8,6 +8,7 @@ export default function Home() {
   const [min, setMin] = useState("");
   const [phone, setPhone] = useState("");
   const [isSave, setIsSave] = useState(false);
+  const [saving, setIsSaving] = useState(false);
   const saveHandler = async () => {
     const date = new Date()
       .toLocaleDateString("th", {
@@ -40,7 +41,7 @@ export default function Home() {
       alert("คุณเพิ่งตั้งปลุกไป");
       return;
     }
-
+    setIsSaving(true);
     const { data } = await axios.post("/api/add-call", {
       time: path,
       phone: phone,
@@ -53,6 +54,7 @@ export default function Home() {
           data: [...lastSaved.data, { path: path, phone: phone }],
         })
       );
+      setIsSaving(false);
     }
   };
   return (
@@ -134,7 +136,7 @@ export default function Home() {
                   type="button"
                   className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
                 >
-                  บันทึก!
+                  {saving ? "กำลังบันทึก..." : "บันทึก!"}
                 </button>
               </div>
             </>

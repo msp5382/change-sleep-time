@@ -26,10 +26,10 @@ const wake = async (to) => {
 };
 
 const timeRound = (time) => {
-  if (Math.abs(parseInt(time) - 0) < 5) {
+  if (Math.abs(parseInt(time) - 0) < 10) {
     return "00";
   }
-  if (Math.abs(parseInt(time) - 30) < 5) {
+  if (Math.abs(parseInt(time) - 30) < 10) {
     return "30";
   }
   return "not-match";
