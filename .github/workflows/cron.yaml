@@ -1,0 +1,13 @@
+name: call-cron
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call our API route
+        run: |
+          curl --request POST \
+          --url 'https://change-sleep-time.vercel.app/api/call' \
+          --header 'key: ${{ secrets.API_SECRET_KEY }}'
