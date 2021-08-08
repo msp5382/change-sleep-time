@@ -73,7 +73,6 @@ export default function callAPI(req, res) {
   ref.get().then(async (doc) => {
     if (doc.exists) {
       const queue = doc.data();
-      res.status(200).json({ ...queue });
 
       console.log(
         await Promise.all(
@@ -87,6 +86,7 @@ export default function callAPI(req, res) {
       console.log("wake done");
 
       ref.delete();
+      res.status(200).json({ ...queue });
     }
   });
 }
