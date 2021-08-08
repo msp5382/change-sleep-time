@@ -61,7 +61,7 @@ export default function callAPI(req, res) {
     res.send();
     return;
   }
-  if (!["6", "7", "8", "9", "10", "11"].includes(time[0])) {
+  if (!["6", "7", "8", "9", "10", "11", "18"].includes(time[0])) {
     res.send();
     return;
   }
